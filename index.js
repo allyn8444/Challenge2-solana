@@ -58,7 +58,6 @@ const {
         console.log("Airdopping some SOL to Sender wallet!");//
         const fromAirDropSignature = await connection.requestAirdrop(
             new PublicKey(from.publicKey),
-            //new PublicKey(my_wallet),
             2 * LAMPORTS_PER_SOL
         );
     
@@ -77,7 +76,6 @@ const {
     
         //check from-wallet balance after airdrop
         const checkFrom_walletBalance = await connection.getBalance(
-                //new PublicKey(my_wallet)
                 new PublicKey(from.publicKey)
              );
              console.log(`from Wallet balance: ${parseInt(checkFrom_walletBalance) / LAMPORTS_PER_SOL} SOL`);
@@ -88,7 +86,6 @@ const {
         var transaction = new Transaction().add(
             SystemProgram.transfer({
                 fromPubkey: from.publicKey,
-                //fromPubkey: my_wallet,
                 toPubkey: to.publicKey,
                 lamports: LAMPORTS_PER_SOL / 100
             })
